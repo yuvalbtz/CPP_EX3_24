@@ -1,18 +1,18 @@
-// development_card.hpp
-#pragma once
+#ifndef DEVELOPMENTCARD_HPP
+#define DEVELOPMENTCARD_HPP
 
-#include <string>
+#include <iostream>
 
 namespace ariel {
 
-    enum class DevelopmentCardType {
-        Monopoly,
-        RoadBuilding,
-        YearOfPlenty,
-        Knight,
-        VictoryPoint
-    };
+class Player;
 
-    std::string developmentCardTypeToString(DevelopmentCardType type);
+class DevelopmentCard {
+public:
+    virtual ~DevelopmentCard() = default;
+};
 
-}
+} // namespace ariel
+
+
+#endif // DEVELOPMENTCARD_HPP

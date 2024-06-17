@@ -1,28 +1,36 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <iostream>
+#include <set>
 #include <vector>
 #include <string>
-#include <unordered_map>
+#include "tile.hpp"
+#include "settlement.hpp"
+#include "city.hpp"
+#include "road.hpp"
+
+using namespace std;
 
 namespace ariel {
 
     class Board {
     private:
-        // Each tile on the board is represented by a pair of (resource type, number)
-        std::vector<std::pair<std::string, int>> tiles;
-        std::unordered_map<std::string, std::vector<int>> settlements; // Player name -> list of settlement tile indices
-        std::unordered_map<std::string, std::vector<int>> roads;       // Player name -> list of road tile indices
+        vector<Tile> tiles;   
+        set<Road> roads;       
+        set<Settlement> settlements; 
+        set<City> Cities;    
 
     public:
         Board();
-        bool placeSettlement(const std::string& playerName, const std::vector<int>& tileIndices);
-        bool placeRoad(const std::string& playerName, const std::vector<int>& tileIndices);
-        std::vector<std::pair<std::string, int>> getTiles() const;
-        std::unordered_map<std::string, std::vector<int>> getSettlements() const;
-        std::unordered_map<std::string, std::vector<int>> getRoads() const;
+        vector<Tile>& getTiles();
+        set<Road>& getRoads();
+        set<Settlement>& getSettlements();
+        set<City>& getCities();
+        Board& operator=(const Board& other);
+        bool isPossibleRoad(const Road& road) const;
+        bool isPossibleSettlement(const Settlement& settlement, const City& city) const;
     };
+} // namespace ariel
 
-}
-
-#endif
+#endif // BOARD_HPP

@@ -1,32 +1,42 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
-LDFLAGS =
-TEST_TARGET = test_catan
-TEST_SRC = test_player.cpp player.cpp board.cpp development_card.cpp
-OBJS = catan.o player.o board.o development_card.o Demo.o
+CXXFLAGS = -std=c++14 -Wall
 
-catan: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o catan $(OBJS) $(LDFLAGS)
+# Define targets
+TEST_TARGET = test
+DEMO_TARGET = demo
 
-Demo.o: Demo.cpp catan.hpp player.hpp board.hpp development_card.hpp
-	$(CXX) $(CXXFLAGS) -c Demo.cpp
+# Source files
+SOURCES = monopoly_card.cpp road_building_card.cpp \
+          year_of_plenty_card.cpp board.cpp catan.cpp \
+          city.cpp knight_card.cpp player.cpp \
+          road.cpp settlement.cpp tile.cpp \
 
-catan.o: catan.cpp catan.hpp player.hpp board.hpp development_card.hpp
-	$(CXX) $(CXXFLAGS) -c catan.cpp
+# Object files
+OBJECTS = $(SOURCES:.cpp=.o)
 
-test: $(TEST_TARGET)
+# Test and demo source files
+TEST_SOURCES = test_player.cpp
+DEMO_SOURCES = Demo.cpp
 
-$(TEST_TARGET): $(TEST_SRC)
-	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_SRC) $(LDFLAGS)
+# Test and demo object files
+TEST_OBJECTS = $(TEST_SOURCES:.cpp=.o)
+DEMO_OBJECTS = $(DEMO_SOURCES:.cpp=.o)
 
-player.o: player.cpp player.hpp board.hpp development_card.hpp
-	$(CXX) $(CXXFLAGS) -c player.cpp
+# Default target
+all: $(DEMO_TARGET)
 
-board.o: board.cpp board.hpp
-	$(CXX) $(CXXFLAGS) -c board.cpp
+# Rule for test target
+$(TEST_TARGET): $(OBJECTS) $(TEST_OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(OBJECTS) $(TEST_OBJECTS)
 
-development_card.o: development_card.cpp development_card.hpp
-	$(CXX) $(CXXFLAGS) -c development_card.cpp
+# Rule for demo target
+$(DEMO_TARGET): $(OBJECTS) $(DEMO_OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(DEMO_TARGET) $(OBJECTS) $(DEMO_OBJECTS)
 
+# Generic rule for compiling .cpp files to .o files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean rule
 clean:
-	rm -f *.o catan $(TEST_TARGET)
+	rm -f $(TEST_TARGET) $(DEMO_TARGET) $(OBJECTS) $(TEST_OBJECTS) $(DEMO_OBJECTS)

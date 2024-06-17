@@ -15,7 +15,7 @@ TEST_CASE("Place Settlement") {
     Board board;
     std::vector<std::string> places = {"Forest"};
     std::vector<int> placesNum = {5};
-    p.placeSettlement(places, placesNum, board);
+    p.placeSettelemnt(places, placesNum, board);
     // Add assertions based on your board implementation
 }
 
