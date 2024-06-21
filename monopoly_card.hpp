@@ -5,15 +5,17 @@
 #include <string>
 #include "development_card.hpp"
 #include "player.hpp"
+using namespace std;
+namespace ariel
+{
 
-namespace ariel {
+    class Player;
 
-class Player;
-
-class MonopolyCard : public DevelopmentCard {
-public:
-    void play(Player& player, std::vector<std::reference_wrapper<ariel::Player>> players, const std::string& resource);
-};
+    class MonopolyCard : public DevelopmentCard
+    {
+    public:
+        void play(Player &player, vector<reference_wrapper<ariel::Player>> players, const string &resource);
+    };
 
 } // namespace ariel
 

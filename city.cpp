@@ -1,8 +1,8 @@
 #include "city.hpp"
-
+using namespace std;
 namespace ariel {
 
-    City::City(std::string nameOfOwner, Tile tile1, Tile tile2, Tile tile3) {
+    City::City(string nameOfOwner, Tile tile1, Tile tile2, Tile tile3) {
         // Insert the tiles into the set of nearby areas
         this->nearby_areas.insert(tile1);
         this->nearby_areas.insert(tile2);
@@ -11,7 +11,7 @@ namespace ariel {
         this->nameOfOwner = nameOfOwner;
     }
 
-    const std::set<Tile>& City::getNearbyAreas() const {
+    const set<Tile>& City::getNearbyAreas() const {
         return this->nearby_areas;  // Return the set of nearby areas
     }
 
@@ -47,7 +47,7 @@ namespace ariel {
         return this->nearby_areas < other.nearby_areas;
     }
 
-    std::ostream& operator<<(std::ostream& os, const City& city) {
+    ostream& operator<<(ostream& os, const City& city) {
         // Print the owner's name
         os << "City(name of owner: " << city.nameOfOwner << "\n";
         // Print the nearby areas

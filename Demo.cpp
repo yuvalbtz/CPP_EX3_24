@@ -14,7 +14,7 @@ int main()
 
     Catan catan(p1, p2, p3);
 
-    Board& board = catan.getBoard();
+    Board &board = catan.getBoard();
 
     vector<string> places = {"Forest", "Mountains", "Hills"};
     vector<int> placesNum = {3, 8, 10};
@@ -31,7 +31,8 @@ int main()
     places = {"Agricultural Land", "Hills"};
     placesNum = {12, 6};
     p1.placeRoad(places, placesNum, board);
-    cout << "\n" << endl;
+    cout << "\n"
+         << endl;
 
     places = {"Mountains", "Pasture Land", "Sea"};
     placesNum = {8, 5, 0};
@@ -58,7 +59,8 @@ int main()
     placesNum = {9, 4};
     p2.placeRoad(places, placesNum, board);
 
-    cout << "\n" << endl;
+    cout << "\n"
+         << endl;
 
     places = {"Mountains", "Pasture Land", "Sea"};
     placesNum = {10, 2, 0};
@@ -76,11 +78,12 @@ int main()
     placesNum = {4, 5};
     p3.placeRoad(places, placesNum, board);
 
-    cout << "\n" << endl;
+    cout << "\n"
+         << endl;
 
-    catan.rollDice(p1);                                    // Simulating dice roll for player 1
+    catan.rollDice(p1);                                // Simulating dice roll for player 1
     p1.placeRoad({"Forest", "Hills"}, {3, 10}, board); // Placing a road for player 1
-    catan.endTurn(p1);                                     // Ending turn for player 1
+    catan.endTurn(p1);                                 // Ending turn for player 1
 
     catan.rollDice(p2); // Simulating dice roll for player 2
     catan.endTurn(p2);  // Ending turn for player 2
@@ -88,7 +91,8 @@ int main()
     catan.rollDice(p3); // Simulating dice roll for player 3
     catan.endTurn(p3);  // Ending turn for player 3
 
-    try{
+    try
+    {
         catan.rollDice(p2); // p2 tries to roll the dice again, but it's not his turn.
     }
     catch (const std::exception &e)
@@ -98,7 +102,7 @@ int main()
 
     catan.rollDice(p1);
     catan.trade(p1, p2, "wood", "brick", 1, 1); // p1 trades 1 wood for 1 brick with p2.
-    catan.endTurn(p1);                        // p1 ends his turn.
+    catan.endTurn(p1);                          // p1 ends his turn.
 
     catan.rollDice(p2);
     catan.trade(p2, p1, "wheat", "brick", 1, 1); // p1 trades 1 wood for 1 brick with p2.
@@ -116,11 +120,11 @@ int main()
     vector<string> places2 = {"Mountains", "Sea"};
     vector<int> placesNum2 = {8, 0};
 
-    //player2 bought one DevelopmentCard, we dont know which he got so we  will try to play them all.
+    // player2 bought one DevelopmentCard, we dont know which he got so we  will try to play them all.
     catan.playDevelopmentCard(p2, places1, placesNum1, places2, placesNum2, board); // play the RoadBuildingCard. the turn ends right after
-    catan.playDevelopmentCard(p2, "wool"); // play the MonopolCard. the turn ends right after
-    catan.playDevelopmentCard(p2, "wood", "ore"); // play the YearOfPlentyCard. the turn ends right after
-    catan.playDevelopmentCard(p2); // play the KnightCard. the turn ends right after
+    catan.playDevelopmentCard(p2, "wool");                                          // play the MonopolCard. the turn ends right after
+    catan.playDevelopmentCard(p2, "wood", "ore");                                   // play the YearOfPlentyCard. the turn ends right after
+    catan.playDevelopmentCard(p2);                                                  // play the KnightCard. the turn ends right after
 
     places = {"Agricultural Land", "Pasture Land", "Pasture Land"};
     placesNum = {4, 5, 11};

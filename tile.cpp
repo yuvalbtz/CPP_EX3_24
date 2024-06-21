@@ -1,77 +1,96 @@
 #include "tile.hpp"
-
-namespace ariel {
+using namespace std;
+namespace ariel
+{
 
     Tile::Tile() : terrain(""), number(0) {}
 
-    Tile::Tile(const std::string& terrain, int number) : terrain(terrain), number(number) {}
+    Tile::Tile(const string &terrain, int number) : terrain(terrain), number(number) {}
 
-    Tile::Tile(const Tile& other) : terrain(other.terrain), number(other.number) {
+    Tile::Tile(const Tile &other) : terrain(other.terrain), number(other.number)
+    {
         // Copy nearby_areas from the other tile
-        for (auto tile : other.nearby_areas) {
+        for (auto tile : other.nearby_areas)
+        {
             nearby_areas.insert(tile);
         }
     }
 
-    std::string Tile::getTerrain() const {
+    string Tile::getTerrain() const
+    {
         return terrain;
     }
 
-    int Tile::getNumber() const {
+    int Tile::getNumber() const
+    {
         return number;
     }
 
-    void Tile::setTerrain(const std::string& terrain) {
+    void Tile::setTerrain(const string &terrain)
+    {
         this->terrain = terrain;
     }
 
-    void Tile::setNumber(int number) {
+    void Tile::setNumber(int number)
+    {
         this->number = number;
     }
 
-    const std::set<Tile*>& Tile::getNearbyAreas() const {
-        return this->nearby_areas;  // Return the set of nearby areas
+    const set<Tile *> &Tile::getNearbyAreas() const
+    {
+        return this->nearby_areas; // Return the set of nearby areas
     }
 
-    void Tile::setNearbyAreas(const std::initializer_list<Tile*>& nearbyTiles) {
+    void Tile::setNearbyAreas(const initializer_list<Tile *> &nearbyTiles)
+    {
         nearby_areas.clear();
-        for (Tile* tile : nearbyTiles) {
+        for (Tile *tile : nearbyTiles)
+        {
             nearby_areas.insert(tile);
         }
     }
 
-    Tile& Tile::operator=(const Tile& other) {
-        if (this != &other) {
+    Tile &Tile::operator=(const Tile &other)
+    {
+        if (this != &other)
+        {
             terrain = other.terrain;
             number = other.number;
             nearby_areas.clear();
             // Copy nearby_areas from the other tile
-            for (auto tile : other.nearby_areas) {
+            for (auto tile : other.nearby_areas)
+            {
                 nearby_areas.insert(tile);
             }
         }
         return *this;
     }
 
-    bool Tile::operator==(const Tile& other) const {
-        if (this->terrain.empty() || other.terrain.empty()) {
+    bool Tile::operator==(const Tile &other) const
+    {
+        if (this->terrain.empty() || other.terrain.empty())
+        {
             return false;
         }
         return this->terrain == other.terrain && this->number == other.number;
     }
 
-    bool Tile::operator!=(const Tile& other) const {
+    bool Tile::operator!=(const Tile &other) const
+    {
         return !(*this == other);
     }
 
-    bool Tile::operator<(const Tile& other) const {
-        if (terrain == other.terrain) {
+    bool Tile::operator<(const Tile &other) const
+    {
+        if (terrain == other.terrain)
+        {
             return number < other.number;
         }
         return terrain < other.terrain;
     }
 
-    std::ostream& operator<<(std::ostream& os, const Tile& tile) {
+    ostream &operator<<(ostream &os, const Tile &tile)
+    {
         os << "Tile(terrain: " << tile.terrain << ", number: " << tile.number << ".";
         return os;
     }

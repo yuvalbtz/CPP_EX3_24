@@ -1,9 +1,13 @@
 #include "board.hpp"
 #include <array>
 
-namespace ariel {
+using namespace std;
 
-    Board::Board() : tiles(19) { // Initializer list approach
+namespace ariel
+{
+
+    Board::Board() : tiles(19)
+    { // Initializer list approach
         // initializes the tiles vector with 19 elements. Each element is a default-constructed Tile object.
         tiles[0] = {"Mountains", 9}; // Initialize specific tile with terrain and number
         tiles[1] = {"Pasture Land", 2};
@@ -47,39 +51,51 @@ namespace ariel {
         tiles[18].setNearbyAreas({&tiles[14], &tiles[15], &tiles[17]});
     }
 
-    std::vector<Tile>& Board::getTiles() {
-        return tiles;  // Return the vector of tiles
+    vector<Tile> &Board::getTiles()
+    {
+        return tiles;
     }
 
-    std::set<Road>& Board::getRoads() {
-        return roads;  // Return the set of roads
+    set<Road> &Board::getRoads()
+    {
+        return roads;
     }
 
-    std::set<Settlement>& Board::getSettlements() {
-        return settlements;  // Return the set of settlements
+    set<Settlement> &Board::getSettlements()
+    {
+        return settlements;
     }
 
-    std::set<City>& Board::getCities() {
-        return Cities;  // Return the set of cities
+    set<City> &Board::getCities()
+    {
+        return Cities;
     }
 
-    bool Board::isPossibleRoad(const Road& road) const {
-        for (const auto& road_on_Board : roads) { // Iterate through all roads on the board
-            if (road == road_on_Board) { // Check if the given road matches any existing road
+    bool Board::isPossibleRoad(const Road &road) const
+    {
+        for (const auto &road_on_Board : roads)
+        { // Iterate through all roads on the board
+            if (road == road_on_Board)
+            {                 // Check if the given road matches any existing road
                 return false; // Road placement is not possible if it already exists
             }
         }
         return true; // Road placement is possible if no matching road is found
     }
 
-    bool Board::isPossibleSettlement(const Settlement& settlement, const City& city) const {
-        for (const auto& settlement_on_Board : settlements) { // Iterate through all settlements on the board
-            if (settlement == settlement_on_Board) { // Check if the given settlement matches any existing settlement
+    bool Board::isPossibleSettlement(const Settlement &settlement, const City &city) const
+    {
+        for (const auto &settlement_on_Board : settlements)
+        { // Iterate through all settlements on the board
+            if (settlement == settlement_on_Board)
+            {                 // Check if the given settlement matches any existing settlement
                 return false; // Settlement placement is not possible if it already exists
             }
         }
-        for (const auto& city_on_Board : Cities) { // Iterate through all cities on the board
-            if (city == city_on_Board) { // Check if the given city matches any existing city
+        for (const auto &city_on_Board : Cities)
+        { // Iterate through all cities on the board
+            if (city == city_on_Board)
+            {                 // Check if the given city matches any existing city
                 return false; // Settlement placement is not possible if it matches an existing city
             }
         }
@@ -87,11 +103,13 @@ namespace ariel {
     }
 
     // Assignment operator
-    Board& Board::operator=(const Board& other) {
-        std::cout << "Board assignment operator called" << std::endl;
-        if (this != &other) { // Check for self-assignment
-            tiles = other.tiles; // Copy tiles
-            roads = other.roads; // Copy roads
+    Board &Board::operator=(const Board &other)
+    {
+        cout << "Board assignment operator called" << endl;
+        if (this != &other)
+        {                                    // Check for self-assignment
+            tiles = other.tiles;             // Copy tiles
+            roads = other.roads;             // Copy roads
             settlements = other.settlements; // Copy settlements
         }
         return *this; // Return the updated object

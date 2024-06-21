@@ -3,11 +3,13 @@
 
 #include "development_card.hpp"
 
-namespace ariel {
+namespace ariel
+{
 
-class VictoryPointCard : public DevelopmentCard {
-public:
-};
+    class VictoryPointCard : public DevelopmentCard
+    {
+    public:
+    };
 
 } // namespace ariel
 

@@ -12,24 +12,26 @@
 
 using namespace std;
 
-namespace ariel {
+namespace ariel
+{
 
-    class Board {
+    class Board
+    {
     private:
-        vector<Tile> tiles;   
-        set<Road> roads;       
-        set<Settlement> settlements; 
-        set<City> Cities;    
+        vector<Tile> tiles;
+        set<Road> roads;
+        set<Settlement> settlements;
+        set<City> Cities;
 
     public:
         Board();
-        vector<Tile>& getTiles();
-        set<Road>& getRoads();
-        set<Settlement>& getSettlements();
-        set<City>& getCities();
-        Board& operator=(const Board& other);
-        bool isPossibleRoad(const Road& road) const;
-        bool isPossibleSettlement(const Settlement& settlement, const City& city) const;
+        vector<Tile> &getTiles();
+        set<Road> &getRoads();
+        set<Settlement> &getSettlements();
+        set<City> &getCities();
+        Board &operator=(const Board &other);
+        bool isPossibleRoad(const Road &road) const;
+        bool isPossibleSettlement(const Settlement &settlement, const City &city) const;
     };
 } // namespace ariel
 

@@ -16,7 +16,8 @@
 
 using namespace std;
 
-namespace ariel {
+namespace ariel
+{
 
     // forward declaration
     class DevelopmentCard;
@@ -25,10 +26,10 @@ namespace ariel {
     class RoadBuildingCard;
     class YearOfPlentyCard;
 
-    class Player {
+    class Player
+    {
     private:
-
-        std::vector<std::unique_ptr<DevelopmentCard>> developmentCards;
+        vector<unique_ptr<DevelopmentCard>> developmentCards;
         string name;
         set<Settlement> possibleSettlements;
         set<Road> possibleRoads;
@@ -36,26 +37,24 @@ namespace ariel {
         set<Road> myRoads;
         set<City> myCities;
 
-        int wood; 
-        int bricks; 
-        int wheat; 
-        int ore; 
-        int wool; 
+        int wood;
+        int bricks;
+        int wheat;
+        int ore;
+        int wool;
 
         bool isPossibleRoad(Road myRoad);
         bool isPossibleSettlement(Settlement mySettelemnt);
         void showCards() const;
 
     public:
-
-      
         Player(string name);
         string getName() const;
-        void setName(const string& name);
-        std::vector<std::unique_ptr<DevelopmentCard>>& getDevelopmentCards();
-        const set<Settlement>& getSettlements() const;
-        const set<Road>& getRoads() const;
-        const set<City>& getCities() const;
+        void setName(const string &name);
+        vector<unique_ptr<DevelopmentCard>> &getDevelopmentCards();
+        const set<Settlement> &getSettlements() const;
+        const set<Road> &getRoads() const;
+        const set<City> &getCities() const;
         int getWood() const;
         void setWood(int amount);
         int getBricks() const;
@@ -65,7 +64,7 @@ namespace ariel {
         int getOre() const;
         void setOre(int amount);
         int getWool() const;
-         void setWool(int amount);
+        void setWool(int amount);
         void placeSettelemnt(vector<string> places, vector<int> placesNum, Board &board);
         void placeRoad(vector<string> places, vector<int> placesNum, Board &board);
         void placeCity(vector<string> places, vector<int> placesNum, Board &board);

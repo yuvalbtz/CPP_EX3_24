@@ -8,19 +8,21 @@
 
 using namespace std;
 
-namespace ariel {
+namespace ariel
+{
 
-    class Road {
+    class Road
+    {
     private:
         string nameOfOwner;
         set<Tile> nearby_areas;
 
     public:
         Road(string nameOfOwner, Tile tile1, Tile tile2);
-        const std::set<Tile>& getNearbyAreas() const;
-        bool operator==(const Road& other) const;
-        bool operator<(const Road& other) const;
-        friend std::ostream& operator<<(std::ostream& os, const Road& road);
+        const set<Tile> &getNearbyAreas() const;
+        bool operator==(const Road &other) const;
+        bool operator<(const Road &other) const;
+        friend ostream &operator<<(ostream &os, const Road &road);
     };
 
 }

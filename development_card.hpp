@@ -3,16 +3,17 @@
 
 #include <iostream>
 
-namespace ariel {
+namespace ariel
+{
 
-class Player;
+    class Player;
 
-class DevelopmentCard {
-public:
-    virtual ~DevelopmentCard() = default;
-};
+    class DevelopmentCard
+    {
+    public:
+        virtual ~DevelopmentCard() = default;
+    };
 
 } // namespace ariel
-
 
 #endif // DEVELOPMENTCARD_HPP

@@ -7,20 +7,21 @@
 
 using namespace std;
 
-namespace ariel {
+namespace ariel
+{
 
-    class City {
+    class City
+    {
     private:
-        string nameOfOwner; 
+        string nameOfOwner;
         set<Tile> nearby_areas;
 
     public:
-
         City(string nameOfOwner, Tile tile1, Tile tile2, Tile tile3);
-        const std::set<Tile>& getNearbyAreas() const;
-        bool operator==(const City& other) const;
-        bool operator<(const City& other) const;
-        friend std::ostream& operator<<(std::ostream& os, const City& city);
+        const set<Tile> &getNearbyAreas() const;
+        bool operator==(const City &other) const;
+        bool operator<(const City &other) const;
+        friend ostream &operator<<(ostream &os, const City &city);
     };
 
 }
